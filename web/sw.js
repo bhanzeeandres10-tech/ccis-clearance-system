@@ -1,5 +1,7 @@
 /* CCIS CLEARANCE PWA worker. Flutter's deprecated cache worker is not used. */
-const CACHE_VERSION = 'ccis-clearance-v2';
+// Increment this identifier for each public release so installed copies fetch
+// the current dashboard instead of holding on to a previous app bundle.
+const CACHE_VERSION = 'ccis-clearance-v3';
 const APP_SHELL = [
   './',
   './index.html',
