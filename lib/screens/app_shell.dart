@@ -199,6 +199,11 @@ class _CcisAppShellState extends State<CcisAppShell> {
                   : Icons.dark_mode_outlined,
             ),
           ),
+          IconButton(
+            tooltip: 'Sign out',
+            onPressed: widget.controller.signOut,
+            icon: const Icon(Icons.logout_outlined),
+          ),
         ],
       );
 
@@ -244,6 +249,12 @@ class _CcisAppShellState extends State<CcisAppShell> {
                   ? Icons.light_mode_outlined
                   : Icons.dark_mode_outlined,
             ),
+          ),
+          const SizedBox(width: 4),
+          IconButton.outlined(
+            tooltip: 'Sign out',
+            onPressed: widget.controller.signOut,
+            icon: const Icon(Icons.logout_outlined),
           ),
         ],
       ),
