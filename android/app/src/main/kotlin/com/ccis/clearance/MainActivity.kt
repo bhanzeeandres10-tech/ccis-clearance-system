@@ -1,4 +1,4 @@
-package com.example.ccis_clearance
+package com.ccis.clearance
 
 import io.flutter.embedding.android.FlutterActivity
 
