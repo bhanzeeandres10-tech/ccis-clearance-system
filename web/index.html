@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="CCIS CLEARANCE helps CCIS students and authorized personnel track event attendance, deficiencies, and clearance progress.">
+  <meta name="application-name" content="CCIS CLEARANCE">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CCIS CLEARANCE">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#12385F">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0D1520">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/ccis-clearance-icon.svg" type="image/svg+xml">
+  <title>CCIS CLEARANCE</title>
+  <style>
+    :root { color-scheme: light dark; background: #f5f8fc; }
+    @media (prefers-color-scheme: dark) { :root { background: #0d1520; } }
+    body { margin: 0; background: inherit; }
+    .ccis-loading {
+      position: fixed; inset: 0; display: grid; place-items: center;
+      font: 700 16px/1.4 Arial, sans-serif; color: #12385f; letter-spacing: .02em;
+    }
+    .ccis-loading__mark {
+      width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 16px;
+      display: grid; place-items: center; color: white; font-size: 21px;
+      background: linear-gradient(145deg, #24527f, #12385f); box-shadow: 0 12px 28px #12385f33;
+    }
+    .ccis-loading__text { text-align: center; }
+    .ccis-local-launcher {
+      box-sizing: border-box; width: min(520px, calc(100% - 48px)); padding: 32px;
+      border: 1px solid #d9e2ee; border-radius: 24px; background: #ffffff;
+      box-shadow: 0 20px 50px #12385f1c; text-align: left;
+    }
+    .ccis-local-launcher h1 { margin: 0 0 12px; color: #12385f; font-size: 25px; }
+    .ccis-local-launcher p { margin: 0 0 18px; color: #43576c; font: 400 16px/1.55 Arial, sans-serif; }
+    .ccis-local-launcher code { display: block; padding: 12px; border-radius: 10px; background: #edf4fc; color: #12385f; font: 700 14px/1.45 Consolas, monospace; overflow-wrap: anywhere; }
+    @media (prefers-color-scheme: dark) { .ccis-loading { color: #dce9f7; } }
+    @media (prefers-color-scheme: dark) {
+      .ccis-local-launcher { border-color: #2b3c51; background: #152131; }
+      .ccis-local-launcher h1 { color: #dce9f7; }
+      .ccis-local-launcher p { color: #b5c5d8; }
+      .ccis-local-launcher code { background: #0d1520; color: #b8d8ff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ccis-loading" aria-live="polite" aria-label="Loading CCIS CLEARANCE">
+    <div class="ccis-loading__text"><div class="ccis-loading__mark">CC</div>CCIS CLEARANCE</div>
+  </div>
+
+  <script>
+    // Flutter web requires HTTP(S) because modern browsers block file:// asset
+    // loading. The direct-file presentation keeps the full demo usable when a
+    // reviewer double-clicks index.html instead of using a web server.
+    if (window.location.protocol === 'file:') {
+      const directDemo = document.createElement('script');
+      directDemo.src = new URL('direct_demo.js', window.location.href).toString();
+      document.head.appendChild(directDemo);
+    }
+
+    // Flutter no longer provides a caching service worker. Register our small,
+    // app-owned PWA worker instead, after the page itself has loaded.
+    if (window.location.protocol !== 'file:') window.addEventListener('load', function () {
+      if (!('serviceWorker' in navigator)) return;
+      navigator.serviceWorker.register('sw.js', { scope: './' }).catch(function (error) {
+        console.warn('CCIS CLEARANCE offline support could not be registered.', error);
+      });
+    });
+  </script>
+  <script>
+    if (window.location.protocol !== 'file:') {
+      const flutterBootstrap = document.createElement('script');
+      flutterBootstrap.src = 'flutter_bootstrap.js';
+      flutterBootstrap.async = true;
+      document.body.appendChild(flutterBootstrap);
+    }
+  </script>
+</body>
+</html>

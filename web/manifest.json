@@ -1,0 +1,30 @@
+{
+  "name": "CCIS CLEARANCE",
+  "short_name": "CCIS CLEARANCE",
+  "description": "Track CCIS event attendance, clearance requirements, deficiencies, and approvals.",
+  "lang": "en",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#F5F8FC",
+  "theme_color": "#12385F",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "icons/ccis-clearance-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ccis-clearance-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
