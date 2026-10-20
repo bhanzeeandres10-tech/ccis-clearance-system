@@ -56,33 +56,17 @@ class _CcisClearanceAppState extends State<CcisClearanceApp> {
           behavior: const _CcisScrollBehavior(),
           child: child ?? const SizedBox.shrink(),
         ),
-        home: AnimatedSwitcher(
-          duration: MediaQuery.maybeOf(context)?.disableAnimations == true
-              ? Duration.zero
-              : const Duration(milliseconds: 280),
-          switchInCurve: Curves.easeOutCubic,
-          switchOutCurve: Curves.easeInCubic,
-          transitionBuilder: (child, animation) => FadeTransition(
-            opacity: animation,
-            child: ScaleTransition(
-              scale: Tween<double>(begin: .985, end: 1).animate(animation),
-              child: child,
-            ),
-          ),
-          // AnimatedSwitcher otherwise lays out the authenticated shell at
-          // its intrinsic size on web. That can squeeze a responsive page to
-          // a few pixels wide after sign-in.
-          layoutBuilder: (currentChild, previousChildren) => Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              ...previousChildren,
-              if (currentChild != null) currentChild,
-            ],
-          ),
+        // Keep the authenticated shell directly constrained by the route.
+        // A root AnimatedSwitcher can receive loose web constraints while it
+        // swaps the login form for the dashboard; that leaves a blank canvas
+        // in release builds after a successful sign-in. Page-level motion is
+        // retained inside each screen, where the constraints are stable.
+        home: SizedBox.expand(
           child: _controller.isSignedIn
               ? CcisAppShell(
                   key: const ValueKey<String>('app-shell'),
-                  controller: _controller)
+                  controller: _controller,
+                )
               : LoginScreen(
                   key: const ValueKey<String>('sign-in'),
                   controller: _controller,
